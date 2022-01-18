@@ -1,0 +1,37 @@
+<div class="mx-2 my-2">
+  <div>
+    <input type="text" value="<%=params[:query]%>" placeholder="Search for employee's name" data-target="employee.query" data-controller="employee" data-action="input->employee#search" data-employee="<%= @employees.to_s %>">
+  </div>
+  <div>
+
+  <div data-reflex-root="[root_modal]">
+  <div class="row">
+    <% if @searched_employees.nil? %>
+      <% @result_employees = @employees%>
+    <% else %>
+      <% @result_employees = @searched_employees %>
+    <% end %>
+      <% @result_employees.each do |employee| %>
+        <div class="col-md-2 px-1" data-reflex="mouseover->employee#show" data-employee-id="<%= employee.id %>" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h1 class="card-title mb-0"><%= employee.employee_name %></h1>
+              <p class="card-text "><%= employee.job_title %></p>
+              <p class="card-text mb-0">Email : <%= employee.employee_email %></p>
+              <p class="card-text ">Mobile no.: <%= employee.mobile_number %></p>
+              <%= button_to "Delete", employee_path(employee), method: :delete, data: {confirm: 'Are you sure?'} %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+  </div>
+  <div root_modal>
+    <!-- Modal -->
+    <%= render "modal" %>
+  </div>
+  </div>
+
+  <div>
+    <%= link_to "New Employee", new_employee_path %>
+  </div>
+</div>

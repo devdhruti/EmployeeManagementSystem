@@ -1,0 +1,21 @@
+<% if @show_employee.present? %>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <h1><%= @show_employee.employee_name %></h1>
+          <p><%= @show_employee.job_title %></p>
+          <p><%= @show_employee.employee_number %></p>
+          <p><%= @show_employee.employee_email %></p>
+          <p><%= @show_employee.mobile_number %></p>
+          <p><%= @show_employee.date_of_joining %></p>
+          <p><%= @show_employee.employee_salary %></p>
+        </div>
+        <div class="modal-footer">
+          <%= link_to "Edit", edit_employee_path(@show_employee), class: "btn btn-primary" %>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
