@@ -9,16 +9,15 @@
       <div class="modal-body">
         <%= form_with model: @department, data: {controller: "department", action: "submit->department#create"} do |form| %>
           <%= form.number_field :user_id, value: current_user.id, type: :hidden %>
-          
-          <div class="mb-3">
-            <div><%= form.text_field :department_name %></div>
-          </div>
-
-          <div class="modal-footer pb-0">
-            <%= form.submit "Create", class: "btn btn-primary"%>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
-          
+            <div class="mb-3">
+              <div>
+                <%= form.text_field :department_name %>
+              </div>
+            </div>
+            <div class="modal-footer pb-0">
+              <%= form.submit "Create", class: "btn btn-primary"%>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
         <% end %>
       </div>
     </div>
