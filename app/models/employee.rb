@@ -1,7 +1,8 @@
 class Employee < ApplicationRecord
   belongs_to :user
+  belongs_to :department
 
-  validates_presence_of :employee_name, :employee_number, :employee_email, :job_title, :mobile_number, :date_of_joining, :employee_salary
+  validates_presence_of :employee_name, :employee_number, :employee_email, :job_title, :mobile_number, :date_of_joining, :employee_salary, :department_id
   validates :employee_name, length: { minimum: 2 }
   VALID_EMAIL_REGEX= /\A[a-z0-9\+\-_\.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :employee_email, uniqueness: true, on: :create

@@ -1,0 +1,42 @@
+<div>
+  <input type="text" value="<%=params[:query]%>" placeholder="Search for Department" data-target="department.query" data-controller="department" data-action="input->department#search" data-department="<%= @departments.to_s %>">
+</div>
+
+<div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Department name</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @searched_departments.nil? %>
+        <% @result_departments = @departments%>
+      <% else %>
+        <% @result_departments = @searched_departments %>
+      <% end %>
+      <% @result_departments.each do |department| %>
+        <tr>
+          <th scope="row"><%= department.id %></th>
+          <td><%= department.department_name %></td>
+          <td>
+            <%= link_to "View", department_path(department), class: "btn btn-light btn-sm border border-secondary mx-2" %>
+            <%= link_to "Delete", department_path(department), class: "btn btn-light btn-sm border border-secondary", method: :delete, data: {confirm: 'Are you sure?'} %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+  </table>
+</div>
+
+<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  New Department
+</button>
+
+<!-- Modal -->
+<%= render "department_modal"%>
+
+<!-- Employees of department -->
+<%= render "employees" %>

@@ -1,0 +1,11 @@
+<div>
+  <% unless @employees_of_department.nil? %>
+    <% if @employees_of_department.present? %>
+      <% @employees_of_department.each do |employee_list| %>
+        <div><%= employee_list.employee_name %></div>
+      <% end%>
+    <% else %>
+      <div>No Emloyee</div>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,27 @@
+<%= form_with(url: "/employees_of_departments", method: :get, data: {controller:"department", action: "submit->department#employee_search"}) do |f| %>
+  <%= text_field_tag :query, params[:query], data: {target: "department.emp"}, placeholder: "Enter Department to search Employees", style: "width:300px" %>
+  <%= submit_tag("Search", class: "btn btn-primary btn-sm") %>
+<% end %>
+
+<% if @employees.nil? %>
+  <p>Enter Department name</p>
+<% else %>
+  <% if @employees == [] %>
+    <p>No Employees present in Department</p>
+  <% else %>
+    <div class="row mt-2">
+      <% @employees.each do |employee| %>
+        <div class="col-md-2">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h1 class="card-title mb-0"><%= employee.employee_name %></h1>
+              <p class="card-text "><%= employee.job_title %></p>
+              <p class="card-text mb-0">Email : <%= employee.employee_email %></p>
+              <p class="card-text ">Mobile no.: <%= employee.mobile_number %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

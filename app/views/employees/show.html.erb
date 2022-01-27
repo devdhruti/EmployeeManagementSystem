@@ -1,0 +1,9 @@
+<h1><%= @employee.employee_name %></h1>
+<p><%= @employee.job_title %></p>
+<% @department = Department.find_by(id: @employee.department_id) %>
+<p>Department name: <%= @department.department_name %></p>
+<p>Employee number: <%= @employee.employee_number %></p>
+<p>Employee email: <%= @employee.employee_email %></p>
+<p>Mobile number: <%= @employee.mobile_number %></p>
+<p>Date of Joining: <%= @employee.date_of_joining %></p>
+<p>Salary: <%= @employee.employee_salary %></p>

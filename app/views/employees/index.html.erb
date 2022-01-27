@@ -12,14 +12,17 @@
       <% @result_employees = @searched_employees %>
     <% end %>
       <% @result_employees.each do |employee| %>
-        <div class="col-md-2 px-1" data-reflex="mouseover->employee#show" data-employee-id="<%= employee.id %>" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <div class="col-md-2 px-1" data-reflex="mouseover->employee#show" data-employee-id="<%= employee.id %>">
           <div class="card" style="width: 18rem;">
             <div class="card-body">
               <h1 class="card-title mb-0"><%= employee.employee_name %></h1>
               <p class="card-text "><%= employee.job_title %></p>
+              <% @department = Department.find_by(id: employee.department_id) %>
+              <p class="card-text mb-0">Department: <%= @department.department_name%></p>
               <p class="card-text mb-0">Email : <%= employee.employee_email %></p>
               <p class="card-text ">Mobile no.: <%= employee.mobile_number %></p>
-              <%= button_to "Delete", employee_path(employee), method: :delete, data: {confirm: 'Are you sure?'} %>
+              <button class="btn btn-light btn-sm border border-secondary"  data-bs-toggle="modal" data-bs-target="#exampleModal">View</button>
+              <%= link_to "Delete", employee_path(employee), class: "btn btn-light btn-sm border border-secondary", method: :delete, data: {confirm: 'Are you sure?'} %>
             </div>
           </div>
         </div>

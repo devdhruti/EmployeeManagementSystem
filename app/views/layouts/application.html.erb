@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Employee</title>
+    <title>Employee Management System</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,33 +11,77 @@
   </head>
 
   <body>
-    <% flash.each do |key, value| %>
-      <% if key=alert %>
-        <div class="alert alert-danger alert-dismissible fade show mb-0" role="alert">
-          <%= value %>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-      <% else %>
-        <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
-          <%= value %>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-      <% end %>
-    <% end %>
-
-    <div class="d-flex flex-row" style="height:948px">
-      <div style="background-color:#d3d3d3">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link link-dark" href="<%=root_path%>">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-dark" href="<%=employees_path%>">Employees</a>
-          </li>
-        </ul>
-      </div>
     
+
+    <div class="d-flex flex-row" style="height:100%; width:100%; position:absolute">
+      <div style="background-color:#d3d3d3">
+
+        <div class="d-flex align-items-start flex-column bd-highlight mb-3" style="height: 100%">
+          <div class="mb-auto p-2 bd-highlight">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link link-dark" href="<%=root_path%>"><%= image_tag "home.png"%><h6 style="font-size: 15px">Home</h6></a>
+              </li>
+              
+              <div class="btn-group dropend">
+                <button type="button" style="text-align: left" class="btn dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <%= image_tag "department.png", style: "height: 28px"%><h6 style="font-size: 15px">Departments
+                </button>
+                <ul class="dropdown-menu" style="background-color: lightgrey">
+                  <li class="nav-item">
+                    <a class="nav-link link-dark" href="<%=departments_path%>" style="font-size: 14px; padding: 0.2rem 0.2rem">All Departments</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link link-dark" href="<%=employees_of_departments_path%>" style="font-size: 14px; padding: 0.2rem 0.2rem">Search Employees</a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="btn-group dropend">
+                <button type="button" style="text-align: left" class="btn dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <%= image_tag "employees.png", style: "height: 28px"%><h6 style="font-size: 15px">Employees
+                </button>
+                <ul class="dropdown-menu" style="background-color: lightgrey">
+                  <li class="nav-item">
+                    <a class="nav-link link-dark" href="<%=employees_path%>" style="font-size: 14px; padding: 0.2rem 0.2rem">Employees</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link link-dark" href="<%=new_employee_path%>" style="font-size: 14px; padding: 0.2rem 0.2rem">New Employee</a>
+                  </li>
+                </ul>
+              </div>
+            </ul>
+          </div>
+
+          <div class="p-2 bd-highlight">
+            <% if user_signed_in?%>
+            <form class="">
+              <%= link_to "Edit User", '/users/edit', :class => 'nav-link link-dark' %>
+              <%= link_to "Log out", '/users/sign_out', :class => 'nav-link link-dark', :method => :delete %>
+            </form>
+            <% else %>
+              <form class="">
+                <%= link_to "Log in", '/users/sign_in', :class => 'nav-link link-dark'%>
+              </form>
+            <% end %>
+          </div>
+        </div>
+      </div>
       <div style="width:100%">
+          <% flash.each do |key, value| %>
+          <% if key=alert %>
+            <div class="alert alert-danger alert-dismissible fade show mb-0" role="alert">
+              <%= value %>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          <% else %>
+            <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+              <%= value %>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          <% end %>
+        <% end %>
+
         <%= yield %>
       </div>
     </div>
