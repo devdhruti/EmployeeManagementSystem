@@ -1,22 +1,25 @@
-<h1><%= @department.department_name%> Department</h1>
+<div class="m-2">
+  <h2 class="border-secondary px-2 py-1" style="border-left:4px solid; border-bottom:1px solid"><%= @department.department_name%> Department</h2>
 
-<% if @employees.present?%>
-  <div class="row mt-2">
-    <% @employees.each do |employee| %>
-      <a class="nav-link link-dark" href="<%=employee_path(employee)%>">
+  <% if @employees.present?%>
+    <div class="row mt-2">
+      <% @employees.each do |employee| %>
         <div class="col-md-2">
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h1 class="card-title mb-0"><%= employee.employee_name %></h1>
-              <p class="card-text "><%= employee.job_title %></p>
-              <p class="card-text mb-0">Email : <%= employee.employee_email %></p>
-              <p class="card-text ">Mobile no.: <%= employee.mobile_number %></p>
+          <a class="nav-link link-dark" href="<%=employee_path(employee)%>">
+            <div class="card" style="width: 17rem;">
+              <div class="card-body">
+                <h3 class="card-title mb-0"><%= employee.employee_first_name %> <%= employee.employee_last_name %></h3>
+                <p class="card-text "><%= employee.job_title %></p>
+                <p class="card-text mb-0">Email : <%= employee.employee_email %></p>
+                <p class="card-text ">Mobile no.: <%= employee.mobile_number %></p>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
-      </a>
-    <% end %>
-  </div>
-<% else %>
-  <p>No employees present</p>
-<% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <p>No employees present</p>
+  <% end %>
+</div>
+<p class="mx-3"><%= link_to 'Back', departments_path %></p>

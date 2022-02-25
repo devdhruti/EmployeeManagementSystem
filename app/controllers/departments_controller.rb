@@ -1,8 +1,7 @@
 class DepartmentsController < ApplicationController
   before_action :authenticate_user!
-
   def index
-    @departments = current_user.departments.order(:created_at)
+    @departments = Department.order(:created_at)
     @department = Department.new
   end
 

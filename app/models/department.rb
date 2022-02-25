@@ -6,4 +6,5 @@ class Department < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search, against: :department_name, using: {tsearch: {prefix: true}}
+  pg_search_scope :search_emp, against: :department_name
 end

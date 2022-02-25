@@ -1,0 +1,41 @@
+<div class="card-body m-3" style="width: 700px;">
+  <%= form_with model: @leave, local: true do |form|%>
+
+    <div class="mb-2">
+      <% if current_user.has_role? :admin %>
+        <%= form.label :employee_id, "Employee Id: " %>
+        <%= form.number_field :employee_id%>
+        <div class="error_message"><%=@leave.errors[:employee_id].first%></div>
+      <% else %>
+        <%= form.label :employee_id, "Employee Id: " %>
+        <%= form.number_field :employee_id, value: @employee.id %>
+      <% end %>
+    </div>
+    
+    <div class="mb-2">
+      <div>Select date : <%= form.date_field :start_date %> --> <%= form.date_field :end_date %></div>
+      <div class="error_message"><%=@leave.errors[:end_date].first%></div>
+    </div>
+
+    <div class="mb-2">
+      <%= form.label :leave_type, "Leave type: " %>
+      <%= form.select :leave_type, ["Full day", "First half", "Second half"] %>
+    </div>
+
+    <div class="mb-2">
+      <div><%= form.label :leave_note, "Note: " %></div>
+      <div><%= form.text_area :leave_note %></div>
+      <div class="error_message"><%=@leave.errors[:leave_note].first%></div>
+    </div>
+
+    <div class="mb-2">
+      <div><%= form.label :notify_employee, "Notify: " %></div>
+      <div><%= form.text_field :notify_employee, placeholder: "Enter Email" %></div>
+      <div class="error_message"><%=@leave.errors[:notify_employee].first%></div>
+    </div>
+    
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>

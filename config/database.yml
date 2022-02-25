@@ -6,13 +6,6 @@ default: &default
 development:
   <<: *default
   database: Employee
-
-test:
-  <<: *default
-  database: Employeetest
-
-production:
-  <<: *default
-  database: Employee_production
-  username: Employee
+  username: postgres
   password: password
+
