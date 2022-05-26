@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  rolify
   has_many :departments, dependent: :destroy
   has_many :employees, through: :departments, dependent: :destroy
   # Include default devise modules. Others available are:

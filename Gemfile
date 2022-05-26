@@ -28,8 +28,15 @@ gem 'devise'
 # Search engine
 gem 'pg_search'
 
+#backgound jobs for sending mail
+gem 'sidekiq'
+
+# gem to add roles
+gem 'rolify'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+
+gem 'activeadmin'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

@@ -1,12 +1,11 @@
 <div>
-  <input type="text" value="<%=params[:query]%>" placeholder="Search for Department" data-target="department.query" data-controller="department" data-action="input->department#search" data-department="<%= @departments.to_s %>">
+  <input type="text" class="border border-secondary rounded-3 m-3 ps-2" style="width: 350px;" value="<%=params[:query]%>" placeholder="Search for Department" data-target="department.query" data-controller="department" data-action="input->department#search" data-department="<%= @departments.to_s %>">
 </div>
 
 <div>
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th scope="col">Id</th>
         <th scope="col">Department name</th>
         <th scope="col">Action</th>
       </tr>
@@ -19,11 +18,12 @@
       <% end %>
       <% @result_departments.each do |department| %>
         <tr>
-          <th scope="row"><%= department.id %></th>
           <td><%= department.department_name %></td>
           <td>
             <%= link_to "View", department_path(department), class: "btn btn-light btn-sm border border-secondary mx-2" %>
-            <%= link_to "Delete", department_path(department), class: "btn btn-light btn-sm border border-secondary", method: :delete, data: {confirm: 'Are you sure?'} %>
+            <% if current_user.has_role? :admin%>
+              <%= link_to "Delete", department_path(department), class: "btn btn-light btn-sm border border-secondary", method: :delete, data: {confirm: 'Are you sure?'} %>
+            <%end%>
           </td>
         </tr>
       <% end %>
@@ -31,9 +31,11 @@
   </table>
 </div>
 
-<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  New Department
-</button>
+<% if current_user.has_role? :admin %>
+  <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="mx-3">
+    New Department
+  </button>
+<%end%>
 
 <!-- Modal -->
 <%= render "department_modal"%>

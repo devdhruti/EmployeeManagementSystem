@@ -1,0 +1,42 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Requested By</th>
+      <th scope="col">Date</th>
+      <th scope="col">Type</th>
+      <th scope="col">Note</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if current_user.has_role? :admin %>
+      <% @leaves.each do |leave| %>
+        <tr>
+          <td><%@employee = Employee.find_by_id(leave.employee_id)%><%= @employee.employee_first_name %> <%= @employee.employee_last_name %></td>
+          <td><%= leave.start_date %> - <%= leave.end_date %></td>
+          <td><%= leave.leave_type %></td>
+          <td><%= leave.leave_note %></td>
+          <% if leave.email_confirmed == true %>
+          <td><li class="btn btn-sm border border-secondary">Accepted</li></td>
+          <% else %>
+          <td><li class="btn btn-sm border border-secondary">Pending</li></td>
+          <% end %>
+        </tr>
+      <% end %>
+    <% else %>
+      <% @current_user_leaves.each do |leave| %>
+        <tr>
+          <td><%@employee = Employee.find_by_id(leave.employee_id)%><%= @employee.employee_first_name %> <%= @employee.employee_last_name %></td>
+          <td><%= leave.start_date %> - <%= leave.end_date %></td>
+          <td><%= leave.leave_type %></td>
+          <td><%= leave.leave_note %></td>
+          <% if leave.email_confirmed == true %>
+          <td><li class="btn btn-sm border border-secondary">Accepted</li></td>
+          <% else %>
+          <td><li class="btn btn-sm border border-secondary">Pending</li></td>
+          <% end %>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

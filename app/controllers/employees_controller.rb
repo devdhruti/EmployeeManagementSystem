@@ -8,12 +8,12 @@ class EmployeesController < ApplicationController
 
   def new
     @employee = Employee.new
-    @departments = current_user.departments
+    @departments = Department.all
   end
 
   def create  
     @employee = Employee.new(employee_params)
-    @departments = current_user.departments
+    @departments = Department.all
 
     if @employee.save
       redirect_to employees_path
@@ -28,7 +28,7 @@ class EmployeesController < ApplicationController
 
   def edit
     @employee = Employee.find(params[:id])
-    @departments = current_user.departments
+    @departments = Department.all
   end
 
   def update
@@ -49,6 +49,6 @@ class EmployeesController < ApplicationController
 
   private
   def employee_params
-    params.require(:employee).permit(:user_id, :department_id, :employee_name, :employee_number, :employee_email, :job_title, :mobile_number, :employee_salary, :date_of_joining, :query)
+    params.require(:employee).permit(:user_id, :department_id, :employee_first_name, :employee_last_name, :employee_number, :employee_email, :job_title, :mobile_number, :employee_salary, :date_of_joining, :query)
   end
 end
