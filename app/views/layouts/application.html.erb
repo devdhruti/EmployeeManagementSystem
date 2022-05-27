@@ -11,8 +11,6 @@
   </head>
 
   <body>
-    
-
     <div class="d-flex flex-row" style="height:100%; width:100%; position:absolute">
       <div style="background-color:#d3d3d3">
 
@@ -39,7 +37,11 @@
 
               <div class="btn-group dropend">
                 <button type="button" style="text-align: left" class="btn dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+<<<<<<< HEAD
                   Employees
+=======
+                <%= image_tag "employees.png", style: "height: 28px"%><h6 style="font-size: 15px">Employees
+>>>>>>> d376e975d76afff227fe5c98bed1e99ae66fb136
                 </button>
                 <ul class="dropdown-menu" style="background-color: lightgrey">
                   <li class="nav-item">
@@ -50,10 +52,28 @@
                   </li>
                 </ul>
               </div>
+<<<<<<< HEAD
+=======
+
+              <div class="btn-group dropend">
+                <button type="button" style="text-align: left" class="btn dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <%= image_tag "leave.png", style: "height: 26px"%><h6 style="font-size: 15px">Leaves
+                </button>
+                <ul class="dropdown-menu" style="background-color: lightgrey">
+                  <li class="nav-item">
+                    <a class="nav-link link-dark" href="<%=leaves_path%>" style="font-size: 14px; padding: 0.2rem 0.2rem">Leave history</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link link-dark" href="<%=new_leave_path%>" style="font-size: 14px; padding: 0.2rem 0.2rem">Apply Leave</a>
+                  </li>
+                </ul>
+              </div>
+>>>>>>> d376e975d76afff227fe5c98bed1e99ae66fb136
             </ul>
           </div>
 
           <div class="p-2 bd-highlight">
+<<<<<<< HEAD
             <% if user_signed_in?%>
             <form class="">
               <%= link_to "Edit User", '/users/edit', :class => 'nav-link link-dark' %>
@@ -64,6 +84,32 @@
                 <%= link_to "Log in", '/users/sign_in', :class => 'nav-link link-dark'%>
               </form>
             <% end %>
+=======
+            <form>
+              <div class="btn-group dropend">
+                <button type="button" style="text-align: left; width: 100px" class="btn dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <%= image_tag "user.png", style: "height: 35px"%><h6 style="font-size: 15px">Profile
+                </button>
+                <ul class="dropdown-menu" style="background-color: lightgrey">
+                  <% if user_signed_in?%>
+                    <li class="nav-item">
+                      <%= link_to "Edit Profile", '/users/edit', :class => 'nav-link link-dark', :style => 'font-size: 14px; padding: 0.2rem 0.2rem' %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "Log out", '/users/sign_out', :class => 'nav-link link-dark', :style => 'font-size: 14px; padding: 0.2rem 0.2rem', :method => :delete %>
+                    </li>
+                  <% else %>
+                    <li class="nav-item">
+                      <%= link_to "Log in", '/users/sign_in', :class => 'nav-link link-dark', :style => 'font-size: 14px; padding: 0.2rem 0.2rem'%>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "Sign up", '/users/sign_up', :class => 'nav-link link-dark', :style => 'font-size: 14px; padding: 0.2rem 0.2rem'%>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            </form>
+>>>>>>> d376e975d76afff227fe5c98bed1e99ae66fb136
           </div>
         </div>
       </div>

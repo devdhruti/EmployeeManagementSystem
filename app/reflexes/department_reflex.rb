@@ -9,7 +9,7 @@ class DepartmentReflex < ApplicationReflex
   end
 
   def employee_search(query = "")
-    searched_departments = Department.search(query)
+    searched_departments = Department.search_emp(query)
     @employees = nil unless searched_departments.present?
     @employees = searched_departments.first.employees if searched_departments.present?
   end

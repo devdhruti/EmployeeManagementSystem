@@ -1,9 +1,14 @@
-<h1><%= @employee.employee_name %></h1>
-<p><%= @employee.job_title %></p>
-<% @department = Department.find_by(id: @employee.department_id) %>
-<p>Department name: <%= @department.department_name %></p>
-<p>Employee number: <%= @employee.employee_number %></p>
-<p>Employee email: <%= @employee.employee_email %></p>
-<p>Mobile number: <%= @employee.mobile_number %></p>
-<p>Date of Joining: <%= @employee.date_of_joining %></p>
-<p>Salary: <%= @employee.employee_salary %></p>
+<div class="m-4">
+  <ul style="list-style: none;">
+    <h2><%= @employee.employee_first_name %> <%= @employee.employee_last_name %></h2>
+    <li><%= @employee.job_title %></li>
+    <% @department = Department.find_by(id: @employee.department_id) %>
+    <li>Department name: <%= @department.department_name %></li>
+    <li>Employee number: <%= @employee.employee_number %></li>
+    <li>Employee email: <%= @employee.employee_email %></li>
+    <li>Mobile number: <%= @employee.mobile_number %></li>
+    <li>Date of Joining: <%= @employee.date_of_joining %></li>
+    <li>Salary: <%= @employee.employee_salary %></li>  
+  </ul>
+</div>
+<p class="mx-5"><%= link_to 'Back', department_path(@department)%></p>

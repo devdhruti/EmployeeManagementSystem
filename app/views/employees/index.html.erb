@@ -1,11 +1,11 @@
-<div class="mx-2 my-2">
+<div class="mx-2 my-3">
   <div>
-    <input type="text" value="<%=params[:query]%>" placeholder="Search for employee's name" data-target="employee.query" data-controller="employee" data-action="input->employee#search" data-employee="<%= @employees.to_s %>">
+    <input type="text" class="border border-secondary rounded-3 mx-2 ps-2" style="width: 350px;" value="<%=params[:query]%>" placeholder="Search for employee's name" data-target="employee.query" data-controller="employee" data-action="input->employee#search" data-employee="<%= @employees.to_s %>">
   </div>
   <div>
 
   <div data-reflex-root="[root_modal]">
-  <div class="row">
+  <div class="row mx-1 my-4">
     <% if @searched_employees.nil? %>
       <% @result_employees = @employees%>
     <% else %>
@@ -13,16 +13,18 @@
     <% end %>
       <% @result_employees.each do |employee| %>
         <div class="col-md-2 px-1" data-reflex="mouseover->employee#show" data-employee-id="<%= employee.id %>">
-          <div class="card" style="width: 18rem;">
+          <div class="card border border-secondary" style="width: 17rem;">
             <div class="card-body">
-              <h1 class="card-title mb-0"><%= employee.employee_name %></h1>
+              <h3 class="card-title mb-0"><%= employee.employee_first_name %> <%= employee.employee_last_name %></h3>
               <p class="card-text "><%= employee.job_title %></p>
               <% @department = Department.find_by(id: employee.department_id) %>
               <p class="card-text mb-0">Department: <%= @department.department_name%></p>
               <p class="card-text mb-0">Email : <%= employee.employee_email %></p>
               <p class="card-text ">Mobile no.: <%= employee.mobile_number %></p>
               <button class="btn btn-light btn-sm border border-secondary"  data-bs-toggle="modal" data-bs-target="#exampleModal">View</button>
-              <%= link_to "Delete", employee_path(employee), class: "btn btn-light btn-sm border border-secondary", method: :delete, data: {confirm: 'Are you sure?'} %>
+              <% if current_user.has_role? :admin %>
+                <%= link_to "Delete", employee_path(employee), class: "btn btn-light btn-sm border border-secondary", method: :delete, data: {confirm: 'Are you sure?'} %>
+              <% end %>
             </div>
           </div>
         </div>
@@ -35,6 +37,6 @@
   </div>
 
   <div>
-    <%= link_to "New Employee", new_employee_path %>
+    <%= link_to "New Employee", new_employee_path, :class => "btn btn-primary mx-1" %>
   </div>
 </div>

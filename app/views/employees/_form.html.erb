@@ -1,58 +1,66 @@
-<%= form_with model: @employee, local: true do |form|%>
+<div class="m-3">
+  <%= form_with model: @employee, local: true do |form|%>
 
-  <%= form.number_field :user_id, value: current_user.id, type: :hidden %>
+    <%= form.number_field :user_id, value: current_user.id, type: :hidden %>
   
-  <div>
-    <div><%= form.label :employee_name, "Name" %></div>
-    <div><%= form.text_field :employee_name %></div>
-    <div class="error_message"><%=@employee.errors[:employee_name].first%></div>
-  </div>
+    <div>
+      <div><%= form.label :employee_first_name, "First Name" %></div>
+      <div><%= form.text_field :employee_first_name %></div>
+      <div class="error_message"><%=@employee.errors[:employee_first_name].first%></div>
+    </div>
 
-  <div>
-    <div><%= form.label :department_id, "Department" %></div>
-    <% departments_array = @departments.map { |department| [department.department_name, department.id] } %>
-    <div><%= form.select :department_id, departments_array, :include_blank => "Choose Department" %></div>
-    <div class="error_message"><%=@employee.errors[:department_id].first%></div>
-  </div>
+    <div>
+      <div><%= form.label :employee_last_name, "Last Name" %></div>
+      <div><%= form.text_field :employee_last_name %></div>
+      <div class="error_message"><%=@employee.errors[:employee_last_name].first%></div>
+    </div>
 
-  <div>
-    <div><%= form.label :employee_number, "Employee no." %></div>
-    <div><%= form.number_field :employee_number %></div>
-    <div class="error_message"><%=@employee.errors[:employee_number].first%></div>
-  </div>
+    <div>
+      <div><%= form.label :department_id, "Department" %></div>
+      <% departments_array = @departments.map { |department| [department.department_name, department.id] } %>
+      <div><%= form.select :department_id, departments_array, :include_blank => "Choose Department" %></div>
+      <div class="error_message"><%=@employee.errors[:department_id].first%></div>
+    </div>
 
-  <div>
-    <div><%= form.label :employee_email, "Email" %></div>
-    <div><%= form.email_field :employee_email %></div>
-    <div class="error_message"><%=@employee.errors[:employee_email].first%></div>
-  </div>
+    <div>
+      <div><%= form.label :employee_number, "Employee no." %></div>
+      <div><%= form.number_field :employee_number %></div>
+      <div class="error_message"><%=@employee.errors[:employee_number].first%></div>
+    </div>
 
-  <div>
-    <div><%= form.label :job_title, "Job Title" %></div>
-    <div><%= form.text_field :job_title  %></div>
-    <div class="error_message"><%=@employee.errors[:job_title].first%></div>
-  </div>
+    <div>
+      <div><%= form.label :employee_email, "Email" %></div>
+      <div><%= form.email_field :employee_email %></div>
+      <div class="error_message"><%=@employee.errors[:employee_email].first%></div>
+    </div>
 
-  <div>
-    <div><%= form.label :mobile_number, "Mobile no." %></div>
-    <div><%= form.telephone_field :mobile_number %></div>
-    <div class="error_message"><%=@employee.errors[:mobile_number].first%></div>
-  </div>
+    <div>
+      <div><%= form.label :job_title, "Job Title" %></div>
+      <div><%= form.text_field :job_title  %></div>
+      <div class="error_message"><%=@employee.errors[:job_title].first%></div>
+    </div>
 
-  <div>
-    <div><%= form.label :date_of_joining, "Date of Joining" %></div>
-    <div><%= form.date_field :date_of_joining %></div>
-    <div class="error_message"><%=@employee.errors[:date_of_joining].first%></div>
-  </div>
+    <div>
+      <div><%= form.label :mobile_number, "Mobile no." %></div>
+      <div><%= form.telephone_field :mobile_number %></div>
+      <div class="error_message"><%=@employee.errors[:mobile_number].first%></div>
+    </div>
 
-  <div>
-    <div><%= form.label :employee_salary, "Salary" %></div>
-    <div><%= form.number_field :employee_salary %></div>
-    <div class="error_message"><%=@employee.errors[:employee_salary].first%></div>
-  </div>
-  
-  <div>
-    <%= form.submit %>
-    <button data-controller="form" data-action= "click->form#reset">reset</button>
-  </div>
-<% end %>
+    <div>
+      <div><%= form.label :date_of_joining, "Date of Joining" %></div>
+      <div><%= form.date_field :date_of_joining %></div>
+      <div class="error_message"><%=@employee.errors[:date_of_joining].first%></div>
+    </div>
+
+    <div>
+      <div><%= form.label :employee_salary, "Salary" %></div>
+      <div><%= form.number_field :employee_salary %></div>
+      <div class="error_message"><%=@employee.errors[:employee_salary].first%></div>
+    </div>
+    
+    <div class="mt-2">
+      <%= form.submit %>
+      <button data-controller="form" data-action= "click->form#reset">reset</button>
+    </div>
+  <% end %>
+</div>
