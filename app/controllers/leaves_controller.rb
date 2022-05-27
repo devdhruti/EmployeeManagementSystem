@@ -24,7 +24,6 @@ class LeavesController < ApplicationController
   end
 
   def create
-    binding.pry
     @leave = Leave.new(leave_params)
     @employee = Employee.find_by_id(@leave.employee_id)
 
