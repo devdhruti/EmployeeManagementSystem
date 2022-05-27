@@ -6,5 +6,3 @@ tmp/cache/assets
 tmp/cache/bootsnap
 bin
 log
-public/packs
-tmp/cache
