@@ -6,10 +6,6 @@
   <table class="table table-bordered">
     <thead>
       <tr>
-<<<<<<< HEAD
-        <th scope="col">Id</th>
-=======
->>>>>>> d376e975d76afff227fe5c98bed1e99ae66fb136
         <th scope="col">Department name</th>
         <th scope="col">Action</th>
       </tr>
@@ -22,20 +18,12 @@
       <% end %>
       <% @result_departments.each do |department| %>
         <tr>
-<<<<<<< HEAD
-          <th scope="row"><%= department.id %></th>
-          <td><%= department.department_name %></td>
-          <td>
-            <%= link_to "View", department_path(department), class: "btn btn-light btn-sm border border-secondary mx-2" %>
-            <%= link_to "Delete", department_path(department), class: "btn btn-light btn-sm border border-secondary", method: :delete, data: {confirm: 'Are you sure?'} %>
-=======
           <td><%= department.department_name %></td>
           <td>
             <%= link_to "View", department_path(department), class: "btn btn-light btn-sm border border-secondary mx-2" %>
             <% if current_user.has_role? :admin%>
               <%= link_to "Delete", department_path(department), class: "btn btn-light btn-sm border border-secondary", method: :delete, data: {confirm: 'Are you sure?'} %>
             <%end%>
->>>>>>> d376e975d76afff227fe5c98bed1e99ae66fb136
           </td>
         </tr>
       <% end %>
@@ -43,17 +31,11 @@
   </table>
 </div>
 
-<<<<<<< HEAD
-<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  New Department
-</button>
-=======
 <% if current_user.has_role? :admin %>
   <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="mx-3">
     New Department
   </button>
 <%end%>
->>>>>>> d376e975d76afff227fe5c98bed1e99ae66fb136
 
 <!-- Modal -->
 <%= render "department_modal"%>
