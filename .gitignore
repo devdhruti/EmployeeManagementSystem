@@ -1,4 +1,4 @@
-Gemfile.lock
+# Gemfile.lock
 db/schema.rb
 log/development.log
 node_modules
