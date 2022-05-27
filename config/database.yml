@@ -9,3 +9,9 @@ development:
   username: postgres
   password: password
 
+
+production:
+  <<: *default
+  database: Employee_production
+  username: postgres
+  password: password
