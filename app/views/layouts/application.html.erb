@@ -37,7 +37,11 @@
 
               <div class="btn-group dropend">
                 <button type="button" style="text-align: left" class="btn dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+<<<<<<< HEAD
+                  Employees
+=======
                 <%= image_tag "employees.png", style: "height: 28px"%><h6 style="font-size: 15px">Employees
+>>>>>>> d376e975d76afff227fe5c98bed1e99ae66fb136
                 </button>
                 <ul class="dropdown-menu" style="background-color: lightgrey">
                   <li class="nav-item">
@@ -48,6 +52,8 @@
                   </li>
                 </ul>
               </div>
+<<<<<<< HEAD
+=======
 
               <div class="btn-group dropend">
                 <button type="button" style="text-align: left" class="btn dropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -62,10 +68,23 @@
                   </li>
                 </ul>
               </div>
+>>>>>>> d376e975d76afff227fe5c98bed1e99ae66fb136
             </ul>
           </div>
 
           <div class="p-2 bd-highlight">
+<<<<<<< HEAD
+            <% if user_signed_in?%>
+            <form class="">
+              <%= link_to "Edit User", '/users/edit', :class => 'nav-link link-dark' %>
+              <%= link_to "Log out", '/users/sign_out', :class => 'nav-link link-dark', :method => :delete %>
+            </form>
+            <% else %>
+              <form class="">
+                <%= link_to "Log in", '/users/sign_in', :class => 'nav-link link-dark'%>
+              </form>
+            <% end %>
+=======
             <form>
               <div class="btn-group dropend">
                 <button type="button" style="text-align: left; width: 100px" class="btn dropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -90,6 +109,7 @@
                 </ul>
               </div>
             </form>
+>>>>>>> d376e975d76afff227fe5c98bed1e99ae66fb136
           </div>
         </div>
       </div>
