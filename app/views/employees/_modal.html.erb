@@ -5,11 +5,12 @@
         <div class="modal-body">
           <h1><%= @show_employee.employee_name %></h1>
           <p><%= @show_employee.job_title %></p>
-          <p><%= @show_employee.employee_number %></p>
-          <p><%= @show_employee.employee_email %></p>
-          <p><%= @show_employee.mobile_number %></p>
-          <p><%= @show_employee.date_of_joining %></p>
-          <p><%= @show_employee.employee_salary %></p>
+          <p class="mb-0">Department name: <%= @department.department_name %></p>
+          <p class="mb-0">Employee number: <%= @show_employee.employee_number %></p>
+          <p class="mb-0">Employee email: <%= @show_employee.employee_email %></p>
+          <p class="mb-0">Mobile number: <%= @show_employee.mobile_number %></p>
+          <p class="mb-0">Date of Joining: <%= @show_employee.date_of_joining %></p>
+          <p>Salary: <%= @show_employee.employee_salary %></p>
         </div>
         <div class="modal-footer">
           <%= link_to "Edit", edit_employee_path(@show_employee), class: "btn btn-primary" %>

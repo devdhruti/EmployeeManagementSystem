@@ -1,0 +1,26 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title" id="exampleModalLabel">Department Name</h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <%= form_with model: @department, data: {controller: "department", action: "submit->department#create"} do |form| %>
+          <%= form.number_field :user_id, value: current_user.id, type: :hidden %>
+          
+          <div class="mb-3">
+            <div><%= form.text_field :department_name %></div>
+          </div>
+
+          <div class="modal-footer pb-0">
+            <%= form.submit "Create", class: "btn btn-primary"%>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+          
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -9,6 +9,13 @@
   </div>
 
   <div>
+    <div><%= form.label :department_id, "Department" %></div>
+    <% departments_array = @departments.map { |department| [department.department_name, department.id] } %>
+    <div><%= form.select :department_id, departments_array, :include_blank => "Choose Department" %></div>
+    <div class="error_message"><%=@employee.errors[:department_id].first%></div>
+  </div>
+
+  <div>
     <div><%= form.label :employee_number, "Employee no." %></div>
     <div><%= form.number_field :employee_number %></div>
     <div class="error_message"><%=@employee.errors[:employee_number].first%></div>

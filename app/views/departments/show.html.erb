@@ -1,0 +1,22 @@
+<h1><%= @department.department_name%> Department</h1>
+
+<% if @employees.present?%>
+  <div class="row mt-2">
+    <% @employees.each do |employee| %>
+      <a class="nav-link link-dark" href="<%=employee_path(employee)%>">
+        <div class="col-md-2">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h1 class="card-title mb-0"><%= employee.employee_name %></h1>
+              <p class="card-text "><%= employee.job_title %></p>
+              <p class="card-text mb-0">Email : <%= employee.employee_email %></p>
+              <p class="card-text ">Mobile no.: <%= employee.mobile_number %></p>
+            </div>
+          </div>
+        </div>
+      </a>
+    <% end %>
+  </div>
+<% else %>
+  <p>No employees present</p>
+<% end %>
